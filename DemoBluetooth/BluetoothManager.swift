@@ -28,11 +28,15 @@ class CoreBluetoothManager: NSObject, BluetoothManager {
     // MARK: - Public methods
     func startAdvertising(with name: String) {
         self.name = name
-        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        if peripheralManager == nil {
+            peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        }
     }
 
     func startScanning() {
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+        if centralManager == nil {
+            centralManager = CBCentralManager(delegate: self, queue: nil)
+        }
     }
 
     // MARK: - Private properties
